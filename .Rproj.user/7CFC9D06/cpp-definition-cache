@@ -1,0 +1,338 @@
+[
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DDPM_Bin.cpp",
+        "file_last_write": 1742664198.0,
+        "definitions": [
+            {
+                "usr": "c:@F@DDPM_Bin#$@N@arma@S@Col>#d#S0_#d#d#d#i#i#i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "DDPM_Bin(arma::vec, arma::vec, double, double, double, unsigned int, unsigned int, unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DDPM_Bin.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DDPM_Bin_Ca.cpp",
+        "file_last_write": 1742664201.0,
+        "definitions": [
+            {
+                "usr": "c:@F@DDPM_Bin_Ca#$@N@arma@S@Col>#d#S0_#d#d#d#i#i#i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "DDPM_Bin_Ca(arma::vec, arma::vec, double, double, double, unsigned int, unsigned int, unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DDPM_Bin_Ca.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DDPM_Linear.cpp",
+        "file_last_write": 1742664204.0,
+        "definitions": [
+            {
+                "usr": "c:@F@DDPM_Linear#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1S0_#1i#1S0_#1S1_#1S0_#1S0_#1d#1d#1d#1d#1d#1d#1d#1i#1i#1i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "DDPM_Linear(const arma::vec, const arma::mat, const arma::vec, const unsigned int, const arma::vec, const arma::mat, const arma::vec, const arma::vec, const double, const double, const double, const double, const double, const double, const double, const unsigned int, const unsigned int, const unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DDPM_Linear.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DDPM_Linear_Ca.cpp",
+        "file_last_write": 1742664207.0,
+        "definitions": [
+            {
+                "usr": "c:@F@DDPM_Linear_Ca#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1S0_#1i#1S0_#1S1_#1S0_#1S0_#1d#1d#1d#1d#1d#1d#1d#1i#1i#1i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "DDPM_Linear_Ca(const arma::vec, const arma::mat, const arma::vec, const unsigned int, const arma::vec, const arma::mat, const arma::vec, const arma::vec, const double, const double, const double, const double, const double, const double, const double, const unsigned int, const unsigned int, const unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DDPM_Linear_Ca.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DPM_Bin.cpp",
+        "file_last_write": 1742664210.0,
+        "definitions": [
+            {
+                "usr": "c:@F@DPM_Bin#$@N@arma@S@Col>#d#S0_#d#d#i#i#i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "DPM_Bin(arma::vec, arma::vec, double, double, unsigned int, unsigned int, unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DPM_Bin.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DPM_Bin_Ca.cpp",
+        "file_last_write": 1742664212.0,
+        "definitions": [
+            {
+                "usr": "c:@F@DPM_Bin_Ca#$@N@arma@S@Col>#d#S0_#d#d#i#i#i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "DPM_Bin_Ca(arma::vec, arma::vec, double, double, unsigned int, unsigned int, unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DPM_Bin_Ca.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DPM_Linear.cpp",
+        "file_last_write": 1742664215.0,
+        "definitions": [
+            {
+                "usr": "c:@F@DPM_Linear#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1S0_#1i#1S0_#1S1_#1S0_#1S0_#1d#1d#1d#1d#1d#1d#1i#1i#1i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "DPM_Linear(const arma::vec, const arma::mat, const arma::vec, const unsigned int, const arma::vec, const arma::mat, const arma::vec, const arma::vec, const double, const double, const double, const double, const double, const double, const unsigned int, const unsigned int, const unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DPM_Linear.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DPM_Linear_Ca.cpp",
+        "file_last_write": 1742664217.0,
+        "definitions": [
+            {
+                "usr": "c:@F@DPM_Linear_Ca#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1S0_#1i#1S0_#1S1_#1S0_#1S0_#1d#1d#1d#1d#1d#1d#1i#1i#1i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "DPM_Linear_Ca(const arma::vec, const arma::mat, const arma::vec, const unsigned int, const arma::vec, const arma::mat, const arma::vec, const arma::vec, const double, const double, const double, const double, const double, const double, const unsigned int, const unsigned int, const unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/DPM_Linear_Ca.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/Simple_Linear.cpp",
+        "file_last_write": 1742664223.0,
+        "definitions": [
+            {
+                "usr": "c:@F@Simple_Linear#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1S0_#1d#1d#1d#1d#1i#1i#1i#1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "Simple_Linear(const arma::vec, const arma::mat, const arma::vec, const double, const double, const double, const double, const unsigned int, const unsigned int, const unsigned int, const int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/Simple_Linear.cpp",
+                "line": 6,
+                "column": 12,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+        "file_last_write": 1742663678.0,
+        "definitions": [
+            {
+                "usr": "c:@F@sample_new_cls_logp#$@N@arma@S@Col>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "sample_new_cls_logp(arma::vec)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 5,
+                "column": 5,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@sample_new_cls_p#$@N@arma@S@Col>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "sample_new_cls_p(arma::vec)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 20,
+                "column": 5,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@tableC#$@N@arma@S@Col>#i#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "tableC(arma::uvec)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 34,
+                "column": 12,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@tableC2#$@N@arma@S@Col>#i#i#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "tableC2(arma::uvec, unsigned int)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 48,
+                "column": 12,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@ran_truncnorm#d#d#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "ran_truncnorm(double, double, double, double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 65,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@den_truncnorm1#d#d#d#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "den_truncnorm1(double, double, double, double, double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 86,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@den_truncnorm#d#d#d#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "den_truncnorm(double, double, double, double, double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 98,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@ran_gamma#$@N@arma@S@Col>#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "ran_gamma(arma::vec, double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 113,
+                "column": 11,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@ran_half_cauchy#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "ran_half_cauchy(double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 127,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@den_half_cauchy#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "den_half_cauchy(double, double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 133,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@ran_beta_post#$@N@arma@S@Col>#d#S0_#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "ran_beta_post(arma::vec, arma::vec, double, double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 139,
+                "column": 11,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@log_sum_w_dbinom#I#I#$@N@arma@S@Col>#d#S0_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "log_sum_w_dbinom(int, int, arma::vec, arma::vec)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 153,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@residual2#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1i#S0_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "residual2(const arma::vec, const arma::mat, const unsigned int, arma::vec)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 166,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@log_normpdf_each#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1i#S0_#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "log_normpdf_each(const arma::vec, const arma::mat, const unsigned int, arma::vec, double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 178,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@normpdf_each#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1i#S0_#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "normpdf_each(const arma::vec, const arma::mat, const unsigned int, arma::vec, double)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 192,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@log_sum_w_dnorm#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1i#S1_#S0_#S0_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "log_sum_w_dnorm(const arma::vec, const arma::mat, const unsigned int, arma::mat, arma::vec, arma::vec)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 206,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@log_sum_w_dnorm2#1$@N@arma@S@Col>#d#1$@N@arma@S@Mat>#d#1i#S1_#1d#S0_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "log_sum_w_dnorm2(const arma::vec, const arma::mat, const unsigned int, arma::mat, const double, arma::vec)",
+                "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.cpp",
+                "line": 226,
+                "column": 8,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "C:/Users/Ohigashi/Documents/ddp4hc/src/others.h",
+        "file_last_write": 1742664188.0,
+        "definitions": [],
+        "hidden": false
+    }
+]

@@ -1,0 +1,13 @@
+Package: ddp4hc
+Type: Package
+Title: dependent Dirichlet process mixture and Dirichlet process mixture methods for using historical control data
+Version: 1.0
+Date: 2024-09-24
+Author: Tomohiro Ohigashi
+Maintainer: Tomohiro Ohigashi <tomoohigashi@gmail.com>
+Description: Nonparametric Bayesian methods for using historical control data. The methods based on dependent Dirichlet process mixture and Dirichlet process mixture for binary outcome with summary statistics and continuous outcome with individual participant data are included
+License: GPL-3
+Imports: Rcpp (>= 1.0.11), RcppArmadillo
+LinkingTo: Rcpp, RcppArmadillo
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2

@@ -1,0 +1,125 @@
+rm( list = ls( envir = globalenv() ), envir = globalenv() )
+
+library(dplyr)
+library(coda)
+library(mcmcse)
+library(truncnorm)
+library(RBesT)
+
+library(Rcpp)
+library(RcppArmadillo)
+
+# Install from the file attached to the paper
+install.packages('./ddp4hc_1.0.tar.gz', repos=NULL, type='source')
+# Install the latest package from the GitHub link
+# remotes::install_github("tom-ohigashi/ddp4hc")
+library(ddp4hc)
+
+# Observed sample sizes
+n_h <- c(107, 44, 51, 39, 139, 20, 78, 35)
+# Number of responses for Case 1 (original dataset)
+x_h <- c( 23, 12, 19,  9,  39,  6,  9, 10)
+# Number of responses for Case 2 (modified dataset)
+# x_h <- c( 23, 12, 31,  9,  39,  6,  9, 10)
+n_CC <- 6
+x_CC <- 1
+n_CT <- 23
+x_CT <- 14
+
+Historical <- data.frame(
+  N = n_h, 
+  X = x_h
+)
+
+Current <- data.frame(
+  TRT = c(0,1),
+  N = c(n_CC, n_CT),
+  X = c(x_CC, x_CT)
+)
+
+H <- length(n_h)
+Data_all <- list(Historical=Historical, Current=Current)
+Data_all$Historical[,"Study"] <- 1:H
+ANA <- list(H=length(Data_all$Historical[,"N"]),x_h=Data_all$Historical[,"X"],n_h=Data_all$Historical[,"N"],x_CC=Data_all$Current$X[1],n_CC=Data_all$Current$N[1],x_CT=Data_all$Current$X[2],n_CT=Data_all$Current$N[2]
+            ,betascale=1, nu=1, C=10)
+ANA_CY <- c(Data_all$Historical$X, Data_all$Current$X[1])
+ANA_CN <- c(Data_all$Historical$N, Data_all$Current$N[1])
+
+SAMPLE <- 200000
+BURN <- 10000
+THIN <- 20
+
+ess_calc <- function(fit){
+  ESS10 <- NA
+  tryCatch({
+    mix10 <- mixfit(fit, type = "beta", Nc=3, constrain_gt1=TRUE)
+    ESS10 <- RBesT::ess(mix10)
+  },
+  error = function(e){
+    ESS10 <- NA
+  },
+  warning = function(e){
+    ESS10 <- NA
+  },
+  finally = {
+  },
+  silent = T)
+  return(ESS10)
+}
+
+
+set.seed(2024)
+# # Current data
+out.c <- rbeta(SAMPLE, 0.5+Data_all$Current$X[1], 0.5+Data_all$Current$N[1]-Data_all$Current$X[1])
+out.t <- rbeta(SAMPLE, 0.5+Data_all$Current$X[2], 0.5+Data_all$Current$N[2]-Data_all$Current$X[2])
+out_CD <- out.t - out.c
+
+# Pooled data
+
+out.c <- rbeta(SAMPLE, 0.5+Data_all$Current$X[1]+sum(Data_all$Historical$X), 0.5+Data_all$Current$N[1]-Data_all$Current$X[1]+sum(Data_all$Historical$N-Data_all$Historical$X))
+out.t <- rbeta(SAMPLE, 0.5+Data_all$Current$X[2], 0.5+Data_all$Current$N[2]-Data_all$Current$X[2])
+out_PD <- out.t - out.c
+
+
+# DPM
+out.t <- rbeta((SAMPLE*3), 0.5+Data_all$Current$X[2], 0.5+Data_all$Current$N[2]-Data_all$Current$X[2])
+
+fit_DPM <- DPM_Bin(y = ANA_CY, n = ANA_CN, hyper_gamma_shape = 1, hyper_gamma_scale = 5, NOUTSAMPLE = (SAMPLE*3), NBURN = BURN, NTHIN = THIN*2)
+out.c <- fit_DPM$p[,length(ANA_CN)]
+out_DPM <- out.t - out.c
+post_ess_DPM <- ess_calc(out.c)
+post_rhat_DPM <- effectiveSize(out.c)/(SAMPLE*3)
+
+
+# DDPM
+fit_DDPM <- DDPM_Bin(y = ANA_CY, n = ANA_CN, hyper_gamma_shape = 1, hyper_gamma_scale = 5, proposal_phi_sd = 0.3, NOUTSAMPLE = (SAMPLE*3), NBURN = BURN, NTHIN = THIN*2)
+out.c <- fit_DDPM$p[,length(ANA_CN)]
+out_DDPM <- out.t - out.c
+post_ess_DDPM <- ess_calc(out.c)
+post_rhat_DDPM <- effectiveSize(out.c)/(SAMPLE*3)
+
+
+# Method, Mean, SD, LCI, UCI
+res_fun <- function(methodn, mcmc, post_ess, rhat){
+  c(methodn, mean(mcmc), sd(mcmc), quantile(mcmc,0.025,names=F),quantile(mcmc,0.975,names=F), rhat, post_ess)
+}
+Result_ALL <- matrix(0, nrow = 4, ncol = 7)
+Result_ALL[1,]  <- res_fun(1, out_CD, NA, NA)
+Result_ALL[2,]  <- res_fun(2, out_PD, NA, NA)
+Result_ALL[3,]  <- res_fun(3, out_DPM, post_ess_DPM, post_rhat_DPM)
+Result_ALL[4,]  <- res_fun(4, out_DDPM, post_ess_DDPM, post_rhat_DDPM)
+
+Result_ALL1 <- as.data.frame(Result_ALL,stringsAsFactors = F) 
+colnames(Result_ALL1) <- c("MethodN", "Mean", "SD", "LCI", "UCI", "diag", "ESS")
+Result_ALL1 <- Result_ALL1 %>% dplyr::mutate(Range = (UCI-LCI), EHSS = ESS - n_CC) %>%
+  mutate(Method = case_when(
+    MethodN == 1 ~ "CD",
+    MethodN == 2 ~ "PD",
+    MethodN == 3 ~ "DPM",
+    MethodN == 4 ~ "DDPM",
+    TRUE ~ ""
+  ))
+
+Result_ALL2 <- Result_ALL1[,c(10,2,3,4,5,8,6,9)]
+Result_ALL2
+
