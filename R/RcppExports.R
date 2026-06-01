@@ -9,6 +9,10 @@ DDPM_Bin_Ca <- function(y, n, hcauchy_scale = 1, proposal_M_DP_sd = 1, proposal_
     .Call(`_ddp4hc_DDPM_Bin_Ca`, y, n, hcauchy_scale, proposal_M_DP_sd, proposal_phi_sd, NBURN, NTHIN, NOUTSAMPLE, print)
 }
 
+DDPM_Cont <- function(ybar, sd, n, hyper_gamma_shape = 1, hyper_gamma_scale = 1, proposal_phi_sd = 0.1, mu_G0 = 0, tau2_G0 = 10000, phi_gamma1 = 2, phi_gamma2 = 2, NBURN = 4000L, NTHIN = 10L, NOUTSAMPLE = 4000L, print = 0L) {
+    .Call(`_ddp4hc_DDPM_Cont`, ybar, sd, n, hyper_gamma_shape, hyper_gamma_scale, proposal_phi_sd, mu_G0, tau2_G0, phi_gamma1, phi_gamma2, NBURN, NTHIN, NOUTSAMPLE, print)
+}
+
 DDPM_Linear <- function(y_C, x_C, g_C, n_C, y_h, x_h, study_id_h, n_h, hyper_gamma_shape = 1, hyper_gamma_scale = 1, mu_beta_G0 = 0, tau_beta_G0 = 10000, alpha_sigma_G0 = 1, beta_sigma_G0 = 1, proposal_phi_sd = 0.1, NBURN = 4000L, NTHIN = 10L, NOUTSAMPLE = 4000L, print = 0L) {
     .Call(`_ddp4hc_DDPM_Linear`, y_C, x_C, g_C, n_C, y_h, x_h, study_id_h, n_h, hyper_gamma_shape, hyper_gamma_scale, mu_beta_G0, tau_beta_G0, alpha_sigma_G0, beta_sigma_G0, proposal_phi_sd, NBURN, NTHIN, NOUTSAMPLE, print)
 }
@@ -23,6 +27,10 @@ DPM_Bin <- function(y, n, hyper_gamma_shape = 1, hyper_gamma_scale = 1, NBURN = 
 
 DPM_Bin_Ca <- function(y, n, hcauchy_scale = 1, proposal_M_DP_sd = 1, NBURN = 4000L, NTHIN = 10L, NOUTSAMPLE = 4000L, print = 0L) {
     .Call(`_ddp4hc_DPM_Bin_Ca`, y, n, hcauchy_scale, proposal_M_DP_sd, NBURN, NTHIN, NOUTSAMPLE, print)
+}
+
+DPM_Cont <- function(ybar, sd, n, hyper_gamma_shape = 1, hyper_gamma_scale = 1, mu_G0 = 0, tau2_G0 = 10000, NBURN = 4000L, NTHIN = 10L, NOUTSAMPLE = 4000L, print = 0L) {
+    .Call(`_ddp4hc_DPM_Cont`, ybar, sd, n, hyper_gamma_shape, hyper_gamma_scale, mu_G0, tau2_G0, NBURN, NTHIN, NOUTSAMPLE, print)
 }
 
 DPM_Linear <- function(y_C, x_C, g_C, n_C, y_h, x_h, study_id_h, n_h, hyper_gamma_shape = 1, hyper_gamma_scale = 1, mu_beta_G0 = 0, tau_beta_G0 = 10000, alpha_sigma_G0 = 1, beta_sigma_G0 = 1, NBURN = 4000L, NTHIN = 10L, NOUTSAMPLE = 4000L, print = 0L) {

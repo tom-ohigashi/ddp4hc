@@ -2,10 +2,12 @@
 
 export(DDPM_Bin)
 export(DDPM_Bin_Ca)
+export(DDPM_Cont)
 export(DDPM_Linear)
 export(DDPM_Linear_Ca)
 export(DPM_Bin)
 export(DPM_Bin_Ca)
+export(DPM_Cont)
 export(DPM_Linear)
 export(DPM_Linear_Ca)
 export(Simple_Linear)

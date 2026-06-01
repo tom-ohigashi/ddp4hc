@@ -221,3 +221,131 @@ DPM_Bin <- function(y, n, hyper_gamma_shape = 1, hyper_gamma_scale = 1, NBURN = 
 DPM_Bin_Ca <- function(y, n, hcauchy_scale = 1, proposal_M_DP_sd = 1, NBURN = 4000L, NTHIN = 10L, NOUTSAMPLE = 4000L, print = 0L) {
   .Call('_ddp4hc_DPM_Bin_Ca', y, n, hcauchy_scale, proposal_M_DP_sd, NBURN, NTHIN, NOUTSAMPLE, print)
 }
+
+#' DPM method with normal model for aggregated study-level continuous data
+#'
+#' @param ybar Sample mean vector where the last element corresponds to current control data
+#' @param sd Sample standard deviation vector where the last element corresponds to current control data
+#' @param n Number of participant vector where the last element corresponds to current control data
+#' @param hyper_gamma_shape Shape parameter for concentration parameter's prior in a DP, with a default value of 1
+#' @param hyper_gamma_scale Scale parameter for concentration parameter's prior in a DP, with a default value of 1
+#' @param mu_G0 Mean parameter for component mean's prior, with a default value of 0
+#' @param tau2_G0 Variance parameter for component mean's prior, with a default value of 10000
+#' @param NBURN Number of iterations for the burn-in phase, with a default value of 4000
+#' @param NTHIN Thinning rate applied to the chain, with a default value of 10
+#' @param NOUTSAMPLE Number of iterations in the output chain, with a default value of 4000
+#' @param print Specifies whether to display the MCMC output during execution with a default value of 0 (none)
+#'
+#' @examples
+#' ybar <- c(8.7, 8.0, 4.4, 6.1, 5.1, 4.8)
+#' sd   <- c(7.2, 5.8, 6.4, 7.1, 6.8, 6.3)
+#' n    <- c(111, 202, 169, 63, 164, 55)
+#'
+#' fit <- DPM_Cont(
+#'   ybar = ybar,
+#'   sd = sd,
+#'   n = n,
+#'   NBURN = 100,
+#'   NTHIN = 2,
+#'   NOUTSAMPLE = 100,
+#'   print = 0
+#' )
+#'
+#' @export
+DPM_Cont <- function(
+    ybar,
+    sd,
+    n,
+    hyper_gamma_shape = 1,
+    hyper_gamma_scale = 1,
+    mu_G0 = 0,
+    tau2_G0 = 10000,
+    NBURN = 4000L,
+    NTHIN = 10L,
+    NOUTSAMPLE = 4000L,
+    print = 0L
+) {
+  .Call(
+    '_ddp4hc_DPM_Cont',
+    ybar,
+    sd,
+    n,
+    hyper_gamma_shape,
+    hyper_gamma_scale,
+    mu_G0,
+    tau2_G0,
+    NBURN,
+    NTHIN,
+    NOUTSAMPLE,
+    print
+  )
+}
+
+
+#' DDPM method with normal model for aggregated study-level continuous data
+#'
+#' @param ybar Sample mean vector where the last element corresponds to current control data
+#' @param sd Sample standard deviation vector where the last element corresponds to current control data
+#' @param n Number of participant vector where the last element corresponds to current control data
+#' @param hyper_gamma_shape Shape parameter for concentration parameter's prior in a DP, with a default value of 1
+#' @param hyper_gamma_scale Scale parameter for concentration parameter's prior in a DP, with a default value of 1
+#' @param proposal_phi_sd Standard deviation of truncated normal distribution as a proposal for phi, with a default value of 0.1
+#' @param mu_G0 Mean parameter for component mean's prior, with a default value of 0
+#' @param tau2_G0 Variance parameter for component mean's prior, with a default value of 10000
+#' @param phi_gamma1 First shape parameter for beta prior on dependence parameter phi, with a default value of 2
+#' @param phi_gamma2 Second shape parameter for beta prior on dependence parameter phi, with a default value of 2
+#' @param NBURN Number of iterations for the burn-in phase, with a default value of 4000
+#' @param NTHIN Thinning rate applied to the chain, with a default value of 10
+#' @param NOUTSAMPLE Number of iterations in the output chain, with a default value of 4000
+#' @param print Specifies whether to display the MCMC output during execution with a default value of 0 (none)
+#'
+#' @examples
+#' ybar <- c(8.7, 8.0, 4.4, 6.1, 5.1, 4.8)
+#' sd   <- c(7.2, 5.8, 6.4, 7.1, 6.8, 6.3)
+#' n    <- c(111, 202, 169, 63, 164, 55)
+#'
+#' fit <- DDPM_Cont(
+#'   ybar = ybar,
+#'   sd = sd,
+#'   n = n,
+#'   NBURN = 100,
+#'   NTHIN = 2,
+#'   NOUTSAMPLE = 100,
+#'   print = 0
+#' )
+#'
+#' @export
+DDPM_Cont <- function(
+    ybar,
+    sd,
+    n,
+    hyper_gamma_shape = 1,
+    hyper_gamma_scale = 1,
+    proposal_phi_sd = 0.1,
+    mu_G0 = 0,
+    tau2_G0 = 10000,
+    phi_gamma1 = 2,
+    phi_gamma2 = 2,
+    NBURN = 4000L,
+    NTHIN = 10L,
+    NOUTSAMPLE = 4000L,
+    print = 0L
+) {
+  .Call(
+    '_ddp4hc_DDPM_Cont',
+    ybar,
+    sd,
+    n,
+    hyper_gamma_shape,
+    hyper_gamma_scale,
+    proposal_phi_sd,
+    mu_G0,
+    tau2_G0,
+    phi_gamma1,
+    phi_gamma2,
+    NBURN,
+    NTHIN,
+    NOUTSAMPLE,
+    print
+  )
+}
