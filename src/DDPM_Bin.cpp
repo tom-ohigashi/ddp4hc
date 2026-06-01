@@ -459,6 +459,7 @@ Rcpp::List DDPM_Bin(
     
   }
   
+  sim_mat /= static_cast<double>(NOUTSAMPLE);
   Rcpp::List ret = Rcpp::List::create(Rcpp::_["p"] = p_out, 
                                       Rcpp::_["z"] = z_out, 
                                       Rcpp::_["sim_mat"] = sim_mat,

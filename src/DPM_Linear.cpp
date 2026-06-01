@@ -345,7 +345,7 @@ Rcpp::List DPM_Linear(
     
   }
   
-  // Rcpp::_["sigma_C"] = sigma_C_out, 
+  sim_mat /= static_cast<double>(NOUTSAMPLE);
   Rcpp::List ret = Rcpp::List::create(Rcpp::_["beta_C"] = beta_C_out, 
                                       Rcpp::_["sigma_C"] = sigma_out,
                                       Rcpp::_["z"] = z_out, 

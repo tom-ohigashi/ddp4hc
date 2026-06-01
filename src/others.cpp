@@ -1,5 +1,6 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 #include <RcppArmadillo.h>
+using namespace Rcpp;
 
 // sampling new claster
 int sample_new_cls_logp(
@@ -241,5 +242,175 @@ double log_sum_w_dnorm2(const arma::vec y_C,
   }
   ret = log(sum(wp));
   return ret;
+}
+
+
+
+int sample_index_from_prob_cont(const arma::vec& p) {
+  double u = R::runif(0.0, 1.0);
+  double cs = 0.0;
+  for (arma::uword i = 0; i < p.n_elem; ++i) {
+    cs += p(i);
+    if (u <= cs) return static_cast<int>(i);
+  }
+  return static_cast<int>(p.n_elem - 1);
+}
+
+arma::uvec tabulate_alloc_cont(const arma::uvec& z, const unsigned int K) {
+  arma::uvec out(K, arma::fill::zeros);
+  for (arma::uword i = 0; i < z.n_elem; ++i) {
+    if (z(i) < K) out(z(i))++;
+  }
+  return out;
+}
+
+unsigned int n_occupied_cont(const arma::uvec& z) {
+  arma::uvec z_unique = arma::unique(z);
+  return z_unique.n_elem;
+}
+
+double sample_dp_precision_cont(
+    const double M,
+    const unsigned int n_obs,
+    const unsigned int n_cl,
+    const double hyper_gamma_shape,
+    const double hyper_gamma_scale
+) {
+  // Escobar-West update: prior M ~ Gamma(shape, scale).
+  double eta = R::rbeta(M + 1.0, static_cast<double>(n_obs));
+  double rate = 1.0 / hyper_gamma_scale - std::log(eta);
+  double mix_num = hyper_gamma_shape + static_cast<double>(n_cl) - 1.0;
+  double mix_den = mix_num + static_cast<double>(n_obs) * rate;
+  double prob = mix_num / mix_den;
+  
+  double shape = (R::runif(0.0, 1.0) < prob)
+    ? hyper_gamma_shape + static_cast<double>(n_cl)
+      : hyper_gamma_shape + static_cast<double>(n_cl) - 1.0;
+  
+  return R::rgamma(shape, 1.0 / rate);
+}
+
+void update_component_means_cont(
+    arma::vec& mu_star,
+    const arma::uvec& z,
+    const arma::vec& ybar,
+    const arma::vec& var_y,
+    const double mu_G0,
+    const double tau2_G0
+) {
+  for (arma::uword c = 0; c < mu_star.n_elem; ++c) {
+    double prec = 1.0 / tau2_G0;
+    double num = mu_G0 / tau2_G0;
+    
+    for (arma::uword j = 0; j < z.n_elem; ++j) {
+      if (z(j) == c) {
+        prec += 1.0 / var_y(j);
+        num  += ybar(j) / var_y(j);
+      }
+    }
+    
+    double post_var = 1.0 / prec;
+    double post_mean = post_var * num;
+    mu_star(c) = R::rnorm(post_mean, std::sqrt(post_var));
+  }
+}
+
+void recompute_stick_weights_cont(
+    arma::vec& w,
+    const arma::vec& v
+) {
+  w.set_size(v.n_elem);
+  double rem = 1.0;
+  for (arma::uword c = 0; c < v.n_elem; ++c) {
+    w(c) = rem * v(c);
+    rem *= (1.0 - v(c));
+  }
+}
+
+
+int sample_index_from_prob_ddpm_cont(const arma::vec& p) {
+  double u = R::runif(0.0, 1.0);
+  double cs = 0.0;
+  for (arma::uword i = 0; i < p.n_elem; ++i) {
+    cs += p(i);
+    if (u <= cs) return static_cast<int>(i);
+  }
+  return static_cast<int>(p.n_elem - 1);
+}
+
+unsigned int n_occupied_ddpm_cont(const arma::uvec& z) {
+  arma::uvec z_unique = arma::unique(z);
+  return z_unique.n_elem;
+}
+
+double log_beta_fn_ddpm_cont(double a, double b) {
+  return R::lbeta(a, b);
+}
+
+double sample_dp_precision_ddpm_cont(
+    const double M,
+    const unsigned int n_obs,
+    const unsigned int n_cl,
+    const double hyper_gamma_shape,
+    const double hyper_gamma_scale
+) {
+  double eta = R::rbeta(M + 1.0, static_cast<double>(n_obs));
+  double rate = 1.0 / hyper_gamma_scale - std::log(eta);
+  double mix_num = hyper_gamma_shape + static_cast<double>(n_cl) - 1.0;
+  double mix_den = mix_num + static_cast<double>(n_obs) * rate;
+  double prob = mix_num / mix_den;
+  
+  double shape = (R::runif(0.0, 1.0) < prob)
+    ? hyper_gamma_shape + static_cast<double>(n_cl)
+      : hyper_gamma_shape + static_cast<double>(n_cl) - 1.0;
+  
+  return R::rgamma(shape, 1.0 / rate);
+}
+
+void update_component_means_ddpm_cont(
+    arma::vec& mu_star,
+    const arma::uvec& z,
+    const arma::vec& ybar,
+    const arma::vec& var_y,
+    const double mu_G0,
+    const double tau2_G0
+) {
+  for (arma::uword c = 0; c < mu_star.n_elem; ++c) {
+    double prec = 1.0 / tau2_G0;
+    double num = mu_G0 / tau2_G0;
+    
+    for (arma::uword j = 0; j < z.n_elem; ++j) {
+      if (z(j) == c) {
+        prec += 1.0 / var_y(j);
+        num  += ybar(j) / var_y(j);
+      }
+    }
+    
+    double post_var = 1.0 / prec;
+    double post_mean = post_var * num;
+    mu_star(c) = R::rnorm(post_mean, std::sqrt(post_var));
+  }
+}
+
+void recompute_weights_ddpm_cont(
+    arma::vec& w,
+    const arma::vec& v
+) {
+  w.set_size(v.n_elem);
+  double rem = 1.0;
+  for (arma::uword c = 0; c < v.n_elem; ++c) {
+    w(c) = rem * v(c);
+    rem *= (1.0 - v(c));
+  }
+}
+
+double logit_ddpm_cont(double x) {
+  return std::log(x) - std::log(1.0 - x);
+}
+
+double invlogit_ddpm_cont(double x) {
+  if (x > 35.0) return 1.0 - 1e-12;
+  if (x < -35.0) return 1e-12;
+  return 1.0 / (1.0 + std::exp(-x));
 }
 

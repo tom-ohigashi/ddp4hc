@@ -49,6 +49,30 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// DDPM_Cont
+Rcpp::List DDPM_Cont(arma::vec ybar, arma::vec sd, arma::vec n, double hyper_gamma_shape, double hyper_gamma_scale, double proposal_phi_sd, double mu_G0, double tau2_G0, double phi_gamma1, double phi_gamma2, unsigned int NBURN, unsigned int NTHIN, unsigned int NOUTSAMPLE, const int print);
+RcppExport SEXP _ddp4hc_DDPM_Cont(SEXP ybarSEXP, SEXP sdSEXP, SEXP nSEXP, SEXP hyper_gamma_shapeSEXP, SEXP hyper_gamma_scaleSEXP, SEXP proposal_phi_sdSEXP, SEXP mu_G0SEXP, SEXP tau2_G0SEXP, SEXP phi_gamma1SEXP, SEXP phi_gamma2SEXP, SEXP NBURNSEXP, SEXP NTHINSEXP, SEXP NOUTSAMPLESEXP, SEXP printSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type ybar(ybarSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type sd(sdSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type n(nSEXP);
+    Rcpp::traits::input_parameter< double >::type hyper_gamma_shape(hyper_gamma_shapeSEXP);
+    Rcpp::traits::input_parameter< double >::type hyper_gamma_scale(hyper_gamma_scaleSEXP);
+    Rcpp::traits::input_parameter< double >::type proposal_phi_sd(proposal_phi_sdSEXP);
+    Rcpp::traits::input_parameter< double >::type mu_G0(mu_G0SEXP);
+    Rcpp::traits::input_parameter< double >::type tau2_G0(tau2_G0SEXP);
+    Rcpp::traits::input_parameter< double >::type phi_gamma1(phi_gamma1SEXP);
+    Rcpp::traits::input_parameter< double >::type phi_gamma2(phi_gamma2SEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type NBURN(NBURNSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type NTHIN(NTHINSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type NOUTSAMPLE(NOUTSAMPLESEXP);
+    Rcpp::traits::input_parameter< const int >::type print(printSEXP);
+    rcpp_result_gen = Rcpp::wrap(DDPM_Cont(ybar, sd, n, hyper_gamma_shape, hyper_gamma_scale, proposal_phi_sd, mu_G0, tau2_G0, phi_gamma1, phi_gamma2, NBURN, NTHIN, NOUTSAMPLE, print));
+    return rcpp_result_gen;
+END_RCPP
+}
 // DDPM_Linear
 Rcpp::List DDPM_Linear(const arma::vec y_C, const arma::mat x_C, const arma::vec g_C, const unsigned int n_C, const arma::vec y_h, const arma::mat x_h, const arma::vec study_id_h, const arma::vec n_h, const double hyper_gamma_shape, const double hyper_gamma_scale, const double mu_beta_G0, const double tau_beta_G0, const double alpha_sigma_G0, const double beta_sigma_G0, const double proposal_phi_sd, const unsigned int NBURN, const unsigned int NTHIN, const unsigned int NOUTSAMPLE, const int print);
 RcppExport SEXP _ddp4hc_DDPM_Linear(SEXP y_CSEXP, SEXP x_CSEXP, SEXP g_CSEXP, SEXP n_CSEXP, SEXP y_hSEXP, SEXP x_hSEXP, SEXP study_id_hSEXP, SEXP n_hSEXP, SEXP hyper_gamma_shapeSEXP, SEXP hyper_gamma_scaleSEXP, SEXP mu_beta_G0SEXP, SEXP tau_beta_G0SEXP, SEXP alpha_sigma_G0SEXP, SEXP beta_sigma_G0SEXP, SEXP proposal_phi_sdSEXP, SEXP NBURNSEXP, SEXP NTHINSEXP, SEXP NOUTSAMPLESEXP, SEXP printSEXP) {
@@ -143,6 +167,27 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// DPM_Cont
+Rcpp::List DPM_Cont(arma::vec ybar, arma::vec sd, arma::vec n, double hyper_gamma_shape, double hyper_gamma_scale, double mu_G0, double tau2_G0, unsigned int NBURN, unsigned int NTHIN, unsigned int NOUTSAMPLE, const int print);
+RcppExport SEXP _ddp4hc_DPM_Cont(SEXP ybarSEXP, SEXP sdSEXP, SEXP nSEXP, SEXP hyper_gamma_shapeSEXP, SEXP hyper_gamma_scaleSEXP, SEXP mu_G0SEXP, SEXP tau2_G0SEXP, SEXP NBURNSEXP, SEXP NTHINSEXP, SEXP NOUTSAMPLESEXP, SEXP printSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type ybar(ybarSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type sd(sdSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type n(nSEXP);
+    Rcpp::traits::input_parameter< double >::type hyper_gamma_shape(hyper_gamma_shapeSEXP);
+    Rcpp::traits::input_parameter< double >::type hyper_gamma_scale(hyper_gamma_scaleSEXP);
+    Rcpp::traits::input_parameter< double >::type mu_G0(mu_G0SEXP);
+    Rcpp::traits::input_parameter< double >::type tau2_G0(tau2_G0SEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type NBURN(NBURNSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type NTHIN(NTHINSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type NOUTSAMPLE(NOUTSAMPLESEXP);
+    Rcpp::traits::input_parameter< const int >::type print(printSEXP);
+    rcpp_result_gen = Rcpp::wrap(DPM_Cont(ybar, sd, n, hyper_gamma_shape, hyper_gamma_scale, mu_G0, tau2_G0, NBURN, NTHIN, NOUTSAMPLE, print));
+    return rcpp_result_gen;
+END_RCPP
+}
 // DPM_Linear
 Rcpp::List DPM_Linear(const arma::vec y_C, const arma::mat x_C, const arma::vec g_C, const unsigned int n_C, const arma::vec y_h, const arma::mat x_h, const arma::vec study_id_h, const arma::vec n_h, const double hyper_gamma_shape, const double hyper_gamma_scale, const double mu_beta_G0, const double tau_beta_G0, const double alpha_sigma_G0, const double beta_sigma_G0, const unsigned int NBURN, const unsigned int NTHIN, const unsigned int NOUTSAMPLE, const int print);
 RcppExport SEXP _ddp4hc_DPM_Linear(SEXP y_CSEXP, SEXP x_CSEXP, SEXP g_CSEXP, SEXP n_CSEXP, SEXP y_hSEXP, SEXP x_hSEXP, SEXP study_id_hSEXP, SEXP n_hSEXP, SEXP hyper_gamma_shapeSEXP, SEXP hyper_gamma_scaleSEXP, SEXP mu_beta_G0SEXP, SEXP tau_beta_G0SEXP, SEXP alpha_sigma_G0SEXP, SEXP beta_sigma_G0SEXP, SEXP NBURNSEXP, SEXP NTHINSEXP, SEXP NOUTSAMPLESEXP, SEXP printSEXP) {
@@ -224,10 +269,12 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_ddp4hc_DDPM_Bin", (DL_FUNC) &_ddp4hc_DDPM_Bin, 9},
     {"_ddp4hc_DDPM_Bin_Ca", (DL_FUNC) &_ddp4hc_DDPM_Bin_Ca, 9},
+    {"_ddp4hc_DDPM_Cont", (DL_FUNC) &_ddp4hc_DDPM_Cont, 14},
     {"_ddp4hc_DDPM_Linear", (DL_FUNC) &_ddp4hc_DDPM_Linear, 19},
     {"_ddp4hc_DDPM_Linear_Ca", (DL_FUNC) &_ddp4hc_DDPM_Linear_Ca, 19},
     {"_ddp4hc_DPM_Bin", (DL_FUNC) &_ddp4hc_DPM_Bin, 8},
     {"_ddp4hc_DPM_Bin_Ca", (DL_FUNC) &_ddp4hc_DPM_Bin_Ca, 8},
+    {"_ddp4hc_DPM_Cont", (DL_FUNC) &_ddp4hc_DPM_Cont, 11},
     {"_ddp4hc_DPM_Linear", (DL_FUNC) &_ddp4hc_DPM_Linear, 18},
     {"_ddp4hc_DPM_Linear_Ca", (DL_FUNC) &_ddp4hc_DPM_Linear_Ca, 18},
     {"_ddp4hc_Simple_Linear", (DL_FUNC) &_ddp4hc_Simple_Linear, 11},
